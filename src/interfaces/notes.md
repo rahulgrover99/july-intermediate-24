@@ -129,3 +129,18 @@ on the implementation of it.
 
 
 Loose coupling v/s tight coupling
+
+
+
+
+### Static keyword
+- Static Methods
+- Static variables.
+
+
+Most common use case of having static variables is 
+to store constant
+
+```java
+//static int PI = 3.14
+```

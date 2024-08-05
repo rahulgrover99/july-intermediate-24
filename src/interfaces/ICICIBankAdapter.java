@@ -15,6 +15,8 @@ public class ICICIBankAdapter implements BankingService{
     }
 
     public void iciciSpecial() {
-
+        System.out.println(BankingService.a);
+//        BankingService.a += 1;
     }
+
 }
