@@ -9,7 +9,7 @@ public class Learner extends User{
         this.psp = psp;
     }
 
-    void attemptContest() {
+    public void attemptContest() {
         System.out.println(name + " attempted a contest. ");
     }
 

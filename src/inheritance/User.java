@@ -11,8 +11,12 @@ public class User {
         this.password = password;
     }
 
-    void login() {
+    public void login() {
         System.out.println("User is logged in.");
+    }
+
+    public String getName() {
+        return name;
     }
 
 
