@@ -4,8 +4,10 @@ import inheritance.Instructor;
 import inheritance.Learner;
 import inheritance.User;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Stack;
 import java.util.function.Function;
 
 // Inheritance can be used for Learners
@@ -37,7 +39,6 @@ public class Inheritance <E extends User> {
         Function<Object, String> f = Object::toString;
 
         System.out.println(learner.map(f).orElse("No Name"));
-
 
     }
 
