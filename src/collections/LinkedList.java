@@ -1,8 +1,10 @@
 package collections;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 
-public class LinkedList<E> implements Iterable<E> {
+public class LinkedList<E> implements Iterable<E>, Comparable<LinkedList<E>> {
 
     LinkedListNode<E> head;
 
@@ -21,6 +23,11 @@ public class LinkedList<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new LinkedListIterator<>(head);
+    }
+
+    @Override
+    public int compareTo(LinkedList<E> o) {
+        return this.hashCode() - o.hashCode();
     }
 
     class LinkedListIterator<E> implements Iterator<E> {
