@@ -1,5 +1,6 @@
 package synchronizedkeyword;
 
+
 public class Counter {
     private int val = 0;
 

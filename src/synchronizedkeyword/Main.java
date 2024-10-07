@@ -1,5 +1,7 @@
 package synchronizedkeyword;
 
+import java.util.Comparator;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         Counter counter = new Counter();
@@ -17,4 +19,12 @@ public class Main {
 
     }
 
+}
+
+class Compare implements Comparator<Integer> {
+
+    @Override
+    public int compare(Integer integer, Integer t1) {
+        return 0;
+    }
 }

@@ -17,6 +17,4 @@ public class ChocolateCone implements IceCream{
         return 20;
     }
 
-    Collections
-
 }
