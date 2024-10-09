@@ -29,7 +29,7 @@ public class Board {
             for (int j = 0; j < N; j++) {
                 Cell cell = cells.get(i).get(j);
                 if (cell.cellState == CellState.FREE) {
-                    stringBuilder.append("|  ");
+                    stringBuilder.append("|   ");
                 } else {
                     stringBuilder.append(String.format("| %c ", cell.player.symbol));
                 }

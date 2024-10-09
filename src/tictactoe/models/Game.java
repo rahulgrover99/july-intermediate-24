@@ -1,16 +1,21 @@
 package tictactoe.models;
 
+import tictactoe.strategies.ColumnWinningStrategy;
+import tictactoe.strategies.RowWinningStrategy;
 import tictactoe.strategies.WinningStrategy;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
     public Board board;
-    List<Player> players;
-    int currentPlayerIndex;
-    List<WinningStrategy> winningStrategies;
-    List<Move> moves;
-    GameState gameState;
+    public List<Player> players;
+    public int currentPlayerIndex;
+    public List<WinningStrategy> winningStrategies;
+    public List<Move> moves;
+    public GameState gameState;
+    public Player winner;
 
     public static Builder getBuilder() {
         return new Builder();
@@ -38,7 +43,7 @@ public class Game {
         Board board;
         List<Player> players;
         int currentPlayerIndex;
-        List<WinningStrategy> winningStrategies;
+        List<WinningStrategy> winningStrategies = List.of(new RowWinningStrategy(), new ColumnWinningStrategy());
         List<Move> moves;
         GameState gameState;
 
@@ -97,6 +102,15 @@ public class Game {
         }
 
         public Game build() {
+            // No players should have same symbol.
+            Set<Character> symbols = new HashSet<>();
+            for (Player player: players) {
+                symbols.add(player.symbol);
+            }
+            if (symbols.size() != players.size()) {
+                throw new IllegalArgumentException("Players symbols are not unique.");
+            }
+            // Add validation like only a single bot player in the game.
             return new Game(this);
         }
 
