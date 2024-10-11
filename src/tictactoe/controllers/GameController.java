@@ -10,8 +10,26 @@ import java.util.List;
 public class GameController {
 
     // TODO: Complete the undo move functionality.
-    public void undoMove() {
+    public void undoMove(Game game) {
+        Move lastMove = game.moves.get(game.moves.size() - 1);
+        game.moves.remove(lastMove);
 
+        // Update the board and next player index.
+        Cell cell = game.board.cells.get(lastMove.cell.row).get(lastMove.cell.col);
+        cell.cellState = CellState.FREE;
+        cell.player = null;
+
+        // Update the last player index.
+
+
+        game.currentPlayerIndex =
+                (game.currentPlayerIndex + game.players.size() - 1)
+                        % game.players.size();
+
+//        game.currentPlayerIndex--;
+//        if (game.currentPlayerIndex < 0) {
+//            game.currentPlayerIndex = game.players.size() - 1;
+//        }
     }
 
     // Public API for users to start a game.
@@ -89,7 +107,7 @@ public class GameController {
     }
 
     private static void checkIfNoMoreCells(Game game) {
-        if (game.moves.size() == game.board.N * game.board.N) {
+        if (game.moves.size() == game.board.N * game.board.N && game.gameState != GameState.COMPLETED) {
             game.gameState = GameState.DRAW;
         }
     }
