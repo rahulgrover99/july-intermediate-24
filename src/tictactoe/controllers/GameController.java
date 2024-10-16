@@ -1,6 +1,7 @@
 package tictactoe.controllers;
 
 import multipleinterfaces.B;
+import tictactoe.exceptions.CellOutOfBoundException;
 import tictactoe.models.*;
 import tictactoe.strategies.WinningStrategy;
 
@@ -9,7 +10,6 @@ import java.util.List;
 
 public class GameController {
 
-    // TODO: Complete the undo move functionality.
     public void undoMove(Game game) {
         Move lastMove = game.moves.get(game.moves.size() - 1);
         game.moves.remove(lastMove);
@@ -20,8 +20,6 @@ public class GameController {
         cell.player = null;
 
         // Update the last player index.
-
-
         game.currentPlayerIndex =
                 (game.currentPlayerIndex + game.players.size() - 1)
                         % game.players.size();
@@ -85,7 +83,7 @@ public class GameController {
         // Validate if this is really valid.
         try {
             validate(move, game.board);
-        } catch(IllegalArgumentException e) {
+        } catch(Exception e) {
             // Handle gracefully.
         }
 
@@ -131,10 +129,10 @@ public class GameController {
         cellToBeUpdated.player = player;
     }
 
-    private static void validate(Move move, Board board) {
+    private static void validate(Move move, Board board) throws CellOutOfBoundException {
         Cell cell = move.cell;
         if (cell.row < 0 || cell.col < 0 || cell.row >= board.N || cell.col >= board.N) {
-            throw new IllegalArgumentException("Cell out of bounds.");
+            throw new CellOutOfBoundException();
         }
 
         if (board.cells.get(cell.row).get(cell.col).cellState == CellState.OCCUPIED) {
