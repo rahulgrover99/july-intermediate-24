@@ -9,10 +9,22 @@ import java.util.List;
 @Getter
 public class ParkingSpot extends BaseModel {
     int spotNumber;
-    ParkingFloor parkingFloor;
     ParkingSpotStatus parkingSpotStatus;
     List<VehicleType> supportedVehicleType;
     Vehicle vehicle;
 
+    public ParkingSpot(int spotNumber) {
+        this.spotNumber = spotNumber;
+        this.parkingSpotStatus = ParkingSpotStatus.FREE;
+        this.supportedVehicleType = List.of(VehicleType.SUV, VehicleType.SEDAN);
+    }
 
+    @Override
+    public String toString() {
+        return "ParkingSpot{" +
+                "spotNumber=" + spotNumber +
+                ", parkingSpotStatus=" + parkingSpotStatus +
+                ", vehicle=" + vehicle +
+                '}';
+    }
 }

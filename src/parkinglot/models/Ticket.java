@@ -13,4 +13,14 @@ public class Ticket extends BaseModel{
     private Gate generatedAt;
     private ParkingSpot parkingSpot;
     private Date entryTime;
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "vehicle=" + vehicle +
+                ", generatedAt=" + generatedAt +
+                ", parkingSpot=" + parkingSpot +
+                ", entryTime=" + entryTime +
+                '}';
+    }
 }

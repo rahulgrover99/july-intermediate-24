@@ -1,7 +1,9 @@
 package parkinglot.controllers;
 
 import parkinglot.models.*;
+import parkinglot.service.TicketService;
 import parkinglot.strategies.FeeCalculationStrategy;
+import parkinglot.strategies.RandomSpotAssignmentStrategy;
 import parkinglot.strategies.SlotAllocationStrategy;
 
 import java.time.Instant;
@@ -9,33 +11,23 @@ import java.util.Date;
 
 public class TicketController {
 
-    private final SlotAllocationStrategy slotAllocationStrategy;
+    private final TicketService ticketService;
 
-    public TicketController(SlotAllocationStrategy slotAllocationStrategy) {
-        this.slotAllocationStrategy = slotAllocationStrategy;
+    public TicketController(TicketService ticketService) {
+        this.ticketService = ticketService;
     }
 
     public Ticket generateTicket(Vehicle vehicle,
-                                 Gate gate) {
+                                 Long gateId, Long parkingLotId) {
+        if (vehicle == null) {
+            throw new IllegalArgumentException("Vehicle is null");
+        }
 
-        // 1. Spot Allocation Strategy would get us the slot
-        // 2. Block the slot. Update available slots.
-        // 3. Create the ticket object.
-        ParkingSpot spot = slotAllocationStrategy.getParkingSpot(vehicle, gate.getParkingLot());
+        return ticketService.generateTicket(vehicle, gateId, parkingLotId);
+    }
 
-        spot.setParkingSpotStatus(ParkingSpotStatus.OCCUPIED);
-        spot.setVehicle(vehicle);
-
-        Ticket ticket = Ticket.builder()
-                .entryTime(Date.from(Instant.now()))
-                .parkingSpot(spot)
-                .operator(gate.getOperator())
-                .vehicle(vehicle)
-                .build();
-
-        ticket.setId(1L);
-
-        return ticket;
+    public Ticket cancelTicket() {
+        return null;
     }
 
 
