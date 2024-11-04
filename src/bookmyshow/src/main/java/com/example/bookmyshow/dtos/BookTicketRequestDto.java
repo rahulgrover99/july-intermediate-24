@@ -1,14 +1,14 @@
 package com.example.bookmyshow.dtos;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @Builder
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookTicketRequestDto {
     private List<Long> showSeatIds;
 }

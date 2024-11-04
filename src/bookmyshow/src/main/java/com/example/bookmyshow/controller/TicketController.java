@@ -8,10 +8,8 @@ import com.example.bookmyshow.service.TicketService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.stream.Collectors;
-
 @RestController
-@RequestMapping("/ticket")
+@RequestMapping("ticket/")
 public class TicketController {
 
     private final TicketService ticketService;
@@ -20,7 +18,7 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
-    @PostMapping(path = "/book")
+    @PostMapping(path = "book")
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody BookTicketResponseDto bookTicket(
             @RequestBody BookTicketRequestDto request
