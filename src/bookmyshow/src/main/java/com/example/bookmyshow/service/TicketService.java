@@ -27,6 +27,7 @@ public class TicketService {
 
         List<ShowSeat> showSeatList = showSeatRepository.findAllById(showSeatIds);
 
+        // Some invalid show seat id sent.
         if (showSeatIds.size() != showSeatList.size()) {
             throw new SeatNotFoundException();
         }
@@ -41,6 +42,7 @@ public class TicketService {
         }
 
 
+        // Update the status in DB.
         showSeatRepository.saveAll(showSeatList);
 
         Booking booking = Booking.builder()
