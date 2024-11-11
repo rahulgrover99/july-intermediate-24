@@ -3,9 +3,11 @@ package com.example.splitwise.controllers;
 import com.example.splitwise.dtos.CreateExpenseRequestDto;
 import com.example.splitwise.models.Expense;
 import com.example.splitwise.service.ExpenseService;
+import com.example.splitwise.strategy.Transaction;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +29,11 @@ public class ExpenseController {
                         requestDto.getUserExpense(),
                         requestDto.getGroupId() == 0?
                                 Optional.empty() : Optional.of(requestDto.getGroupId()));
+    }
+
+    @GetMapping("/group/{id}")
+    public List<Transaction> getSettleUpTransactions(@PathVariable("id") Long id) {
+        return expenseService.settleUp(id);
     }
 
 }

@@ -18,6 +18,7 @@
         <option value="Interface" />
         <option value="com.haulmont.jpb.JpaEntity" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,6 +46,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -63,8 +66,30 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.splitwise.strategy" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.splitwise.strategy" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.SplitwiseApplication">
+    <configuration name="SettleUpStrategyTest.settleUp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="splitwise" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.splitwise.strategy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.splitwise.strategy" />
+      <option name="MAIN_CLASS_NAME" value="com.example.splitwise.strategy.SettleUpStrategyTest" />
+      <option name="METHOD_NAME" value="settleUp" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SplitwiseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="splitwise" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.splitwise.SplitwiseApplication" />
@@ -72,6 +97,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SettleUpStrategyTest.settleUp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,11 +111,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730911877579</updated>
-      <workItem from="1730911879809" duration="9673000" />
+      <workItem from="1730911879809" duration="13341000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/splitwise/strategy/SettleUpStrategy.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.example.splitwise.models.Expense" memberName="name" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

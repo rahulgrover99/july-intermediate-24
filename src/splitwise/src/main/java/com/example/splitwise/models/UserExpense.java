@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "user_expense")
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserExpense extends BaseModel {
+public class UserExpense extends BaseModel implements Comparable {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -20,4 +20,15 @@ public class UserExpense extends BaseModel {
     @Column(nullable = false)
     private Double amountOwed;
 
+
+    @Override
+    public int compareTo(Object o) {
+        if (!(o instanceof UserExpense)) {
+            throw new RuntimeException();
+        }
+
+        UserExpense other = (UserExpense) o;
+        return Double.compare(amountOwed, other.amountOwed);
+
+    }
 }

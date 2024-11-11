@@ -8,6 +8,8 @@ import com.example.splitwise.repository.ExpenseRepository;
 import com.example.splitwise.repository.ExpenseUserRepository;
 import com.example.splitwise.repository.GroupRepository;
 import com.example.splitwise.repository.UserRepository;
+import com.example.splitwise.strategy.SettleUpStrategy;
+import com.example.splitwise.strategy.Transaction;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -60,4 +62,19 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
+    public List<Transaction> settleUp(Long id) {
+        Optional<Group> group = groupRepository.findById(id);
+
+        if (group.isEmpty()) {
+            throw new IllegalArgumentException("Group does not exist");
+        }
+
+        System.out.println(group.get().getName());
+
+        List<Expense> expenses = expenseRepository.findAllByGroup(group.get());
+
+        System.out.println(expenses.size());
+
+        return SettleUpStrategy.settleUp(expenses);
+    }
 }
